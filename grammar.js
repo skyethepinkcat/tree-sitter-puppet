@@ -28,6 +28,12 @@ const PREC = {
 module.exports = grammar({
   name: 'puppet',
 
+  externals: $ => [
+    $.heredoc_start,
+    $.heredoc_body,
+    $.heredoc_end,
+  ],
+
   conflicts: $ => [
     [$.statement, $.expression],
     [$.statement, $.literal],
@@ -71,6 +77,7 @@ module.exports = grammar({
       $.hash,
       $.variable,
       $.string,
+      $.heredoc,
       $._identifier,
       $.resource_reference,
     )),
@@ -418,6 +425,7 @@ module.exports = grammar({
       $.number,
       $.float,
       $.string,
+      $.heredoc,
       $.regex,
       $.boolean,
       $.undef,
@@ -460,6 +468,12 @@ module.exports = grammar({
         )),
         '\'',
       ),
+    ),
+
+    heredoc: $ => seq(
+      $.heredoc_start,
+      $.heredoc_body,
+      $.heredoc_end,
     ),
 
     _double_string_content: _ => token.immediate(prec(1, /[^"$\\]+/)),

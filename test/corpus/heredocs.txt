@@ -1,0 +1,176 @@
+========================
+Unquoted heredoc
+========================
+
+$text = @(END)
+hello world
+END
+
+---
+
+(source_file
+  (assignment
+    (variable
+      (identifier))
+    (heredoc
+      (heredoc_start)
+      (heredoc_body)
+      (heredoc_end))))
+
+========================
+Double-quoted heredoc
+========================
+
+$text = @("END")
+hello world
+END
+
+---
+
+(source_file
+  (assignment
+    (variable
+      (identifier))
+    (heredoc
+      (heredoc_start)
+      (heredoc_body)
+      (heredoc_end))))
+
+========================
+Heredoc with escape flags
+========================
+
+$text = @("END"/n)
+line one\nline two
+END
+
+---
+
+(source_file
+  (assignment
+    (variable
+      (identifier))
+    (heredoc
+      (heredoc_start)
+      (heredoc_body)
+      (heredoc_end))))
+
+========================
+Empty heredoc body
+========================
+
+$text = @("END")
+END
+
+---
+
+(source_file
+  (assignment
+    (variable
+      (identifier))
+    (heredoc
+      (heredoc_start)
+      (heredoc_body)
+      (heredoc_end))))
+
+========================
+Heredoc with margin marker
+========================
+
+$text = @("END")
+  hello
+  | END
+
+---
+
+(source_file
+  (assignment
+    (variable
+      (identifier))
+    (heredoc
+      (heredoc_start)
+      (heredoc_body)
+      (heredoc_end))))
+
+========================
+Heredoc with chomp marker
+========================
+
+$text = @("END")
+hello
+-END
+
+---
+
+(source_file
+  (assignment
+    (variable
+      (identifier))
+    (heredoc
+      (heredoc_start)
+      (heredoc_body)
+      (heredoc_end))))
+
+========================
+Heredoc with margin and chomp markers
+========================
+
+$text = @("END")
+  hello world
+  |-END
+
+---
+
+(source_file
+  (assignment
+    (variable
+      (identifier))
+    (heredoc
+      (heredoc_start)
+      (heredoc_body)
+      (heredoc_end))))
+
+========================
+Multi-line heredoc body
+========================
+
+$text = @("END")
+line one
+line two
+line three
+END
+
+---
+
+(source_file
+  (assignment
+    (variable
+      (identifier))
+    (heredoc
+      (heredoc_start)
+      (heredoc_body)
+      (heredoc_end))))
+
+========================
+Heredoc as resource attribute value
+========================
+
+file { '/etc/motd':
+  content => @("END")
+  hello from puppet
+  END
+}
+
+---
+
+(source_file
+  (resource_declaration
+    (identifier)
+    (string
+      (string_content))
+    (attribute
+      (identifier)
+      (heredoc
+        (heredoc_start)
+        (heredoc_body)
+        (heredoc_end)))))

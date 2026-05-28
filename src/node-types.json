@@ -62,6 +62,10 @@
         "named": true
       },
       {
+        "type": "heredoc",
+        "named": true
+      },
+      {
         "type": "number",
         "named": true
       },
@@ -117,6 +121,10 @@
       },
       {
         "type": "hash",
+        "named": true
+      },
+      {
+        "type": "heredoc",
         "named": true
       },
       {
@@ -774,6 +782,29 @@
       "types": [
         {
           "type": "attribute",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "heredoc",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "heredoc_body",
+          "named": true
+        },
+        {
+          "type": "heredoc_end",
+          "named": true
+        },
+        {
+          "type": "heredoc_start",
           "named": true
         }
       ]
@@ -1591,7 +1622,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "default",
@@ -1624,6 +1656,18 @@
   {
     "type": "function",
     "named": false
+  },
+  {
+    "type": "heredoc_body",
+    "named": true
+  },
+  {
+    "type": "heredoc_end",
+    "named": true
+  },
+  {
+    "type": "heredoc_start",
+    "named": true
   },
   {
     "type": "identifier",
