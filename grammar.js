@@ -237,8 +237,10 @@ module.exports = grammar({
       field('iterator', $.expression),
       '|',
       commaSep(
-        seq(optional($.type),
-        $.variable)),
+        seq(
+          optional($.type),
+          $.variable)
+        ),
       '|',
       $.block,
     ),
