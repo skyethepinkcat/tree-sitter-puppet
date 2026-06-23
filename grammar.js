@@ -133,7 +133,7 @@ module.exports = grammar({
     )),
 
     lambda: $ => seq(
-      optional(seq('|', commaSep($.variable), '|')),
+      optional(seq('|', seq(optional($.type), commaSep($.variable), '|'))),
       $.block,
     ),
 
@@ -236,7 +236,9 @@ module.exports = grammar({
     iterator_statement: $ => seq(
       field('iterator', $.expression),
       '|',
-      commaSep($.variable),
+      commaSep(
+        seq(optional($.type),
+        $.variable)),
       '|',
       $.block,
     ),
@@ -387,10 +389,12 @@ module.exports = grammar({
       optional($.lambda),
     )),
 
+
     field_expression: $ => prec(PREC.MEMBER, seq(
       $.expression,
       '.',
       $._identifier,
+      optional($.lambda)
     )),
 
     variable: $ => seq('$', $._identifier),
