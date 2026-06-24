@@ -133,7 +133,7 @@ module.exports = grammar({
     )),
 
     lambda: $ => seq(
-      optional(seq('|', seq(optional($.type), commaSep($.variable), '|'))),
+      optional(seq('|', commaSep(seq(optional($.type), $.variable)), '|')),
       $.block,
     ),
 
@@ -233,8 +233,13 @@ module.exports = grammar({
       $.block,
     ),
 
-    iterator_statement: $ => seq(
-      field('iterator', $.expression),
+    iterator_statement: $ => prec(PREC.CALL, seq(
+      field('iterator',
+        choice(
+          $.expression,
+          seq($.expression, ".", $.builtin_iterator_funtions)
+        ),
+      ),
       '|',
       commaSep(
         seq(
@@ -243,7 +248,7 @@ module.exports = grammar({
         ),
       '|',
       $.block,
-    ),
+    )),
 
     resource_collector: $ => seq(
       $.identifier,
@@ -281,6 +286,23 @@ module.exports = grammar({
       $.attribute_type,
       $.array_type,
     )),
+
+    builtin_iterator_funtions: _ => choice(
+      'all',
+      'any',
+      'each',
+      'filter',
+      'group_by',
+      'index',
+      'map',
+      'partition',
+      'reduce',
+      'reverse_each',
+      'then',
+      'tree_each',
+      'unique',
+      'unwrap',
+    ),
 
     builtin_type: _ => choice(
       'Boolean',
@@ -391,12 +413,16 @@ module.exports = grammar({
       optional($.lambda),
     )),
 
-
-    field_expression: $ => prec(PREC.MEMBER, seq(
+    field_expression: $ => prec.left(PREC.MEMBER, seq(
       $.expression,
       '.',
-      $._identifier,
-      optional($.lambda)
+      choice(
+        $._identifier,
+        seq(
+          $.builtin_iterator_funtions,
+          $.lambda,
+        )
+      )
     )),
 
     variable: $ => seq('$', $._identifier),
