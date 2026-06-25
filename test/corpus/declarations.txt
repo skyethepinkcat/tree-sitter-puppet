@@ -1,0 +1,12 @@
+========================
+Leading ::
+========================
+
+::apache::mod { 'cgi': }
+
+---
+
+(source_file
+    (resource_declaration
+      (class_identifier (identifier) (identifier))
+      (string (string_content))))

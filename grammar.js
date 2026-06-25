@@ -495,7 +495,7 @@ module.exports = grammar({
 
     _identifier: $ => prec.right(choice($.class_identifier, $.identifier)),
 
-    class_identifier: $ => seq(choice('$', $.identifier), '::', sep1($.identifier, '::')),
+    class_identifier: $ => prec.right(seq(optional($.identifier), '::', sep1($.identifier, '::'))),
 
     identifier: _ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
