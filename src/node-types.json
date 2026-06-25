@@ -496,6 +496,11 @@
     "fields": {}
   },
   {
+    "type": "builtin_iterator_funtions",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "builtin_type",
     "named": true,
     "fields": {}
@@ -716,7 +721,15 @@
       "required": true,
       "types": [
         {
+          "type": "builtin_iterator_funtions",
+          "named": true
+        },
+        {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "lambda",
           "named": true
         }
       ]
@@ -861,9 +874,17 @@
     "named": true,
     "fields": {
       "iterator": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "builtin_iterator_funtions",
+            "named": true
+          },
           {
             "type": "expression",
             "named": true
@@ -877,6 +898,10 @@
       "types": [
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         },
         {
@@ -896,6 +921,10 @@
       "types": [
         {
           "type": "block",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         },
         {
@@ -1578,7 +1607,15 @@
     "named": false
   },
   {
+    "type": "all",
+    "named": false
+  },
+  {
     "type": "and",
+    "named": false
+  },
+  {
+    "type": "any",
     "named": false
   },
   {
@@ -1603,6 +1640,10 @@
     "named": false
   },
   {
+    "type": "each",
+    "named": false
+  },
+  {
     "type": "else",
     "named": false
   },
@@ -1619,11 +1660,19 @@
     "named": false
   },
   {
+    "type": "filter",
+    "named": false
+  },
+  {
     "type": "float",
     "named": true
   },
   {
     "type": "function",
+    "named": false
+  },
+  {
+    "type": "group_by",
     "named": false
   },
   {
@@ -1643,7 +1692,15 @@
     "named": false
   },
   {
+    "type": "index",
+    "named": false
+  },
+  {
     "type": "inherits",
+    "named": false
+  },
+  {
+    "type": "map",
     "named": false
   },
   {
@@ -1659,6 +1716,14 @@
     "named": false
   },
   {
+    "type": "partition",
+    "named": false
+  },
+  {
+    "type": "reduce",
+    "named": false
+  },
+  {
     "type": "regex",
     "named": true
   },
@@ -1667,11 +1732,23 @@
     "named": false
   },
   {
+    "type": "reverse_each",
+    "named": false
+  },
+  {
     "type": "string_content",
     "named": true
   },
   {
     "type": "tag",
+    "named": false
+  },
+  {
+    "type": "then",
+    "named": false
+  },
+  {
+    "type": "tree_each",
     "named": false
   },
   {
@@ -1687,7 +1764,15 @@
     "named": true
   },
   {
+    "type": "unique",
+    "named": false
+  },
+  {
     "type": "unless",
+    "named": false
+  },
+  {
+    "type": "unwrap",
     "named": false
   },
   {

@@ -59,6 +59,12 @@
 (function_call
   (field_expression "." (identifier) @method.call) "(")
 
+(field_expression
+  ((builtin_iterator_funtions) @method.call))
+
+(iterator_statement
+  ((builtin_iterator_funtions) @method.call))
+
 (defined_resource_type
   "define" . (identifier) @function)
 

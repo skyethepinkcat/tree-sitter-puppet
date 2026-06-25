@@ -1,0 +1,24 @@
+========================
+Class Definition
+========================
+
+class foo::bar (
+  String $name,
+  Boolean $something = false,
+) { }
+
+---
+
+(source_file
+  (class_definition
+    (class_identifier
+      (identifier)
+      (identifier))
+    (parameter_list
+      (parameter (builtin_type)
+      (variable (identifier)))
+      (parameter (builtin_type)
+      (variable (identifier))
+      (boolean))
+    )
+    (block)))

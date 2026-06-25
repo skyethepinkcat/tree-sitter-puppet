@@ -1,6 +1,5 @@
 [
   (block)
-  (defined_resource_type)
   (parameter_list)
   (attribute_type_entry)
   (resource_declaration)
