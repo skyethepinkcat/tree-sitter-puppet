@@ -1,0 +1,68 @@
+========================
+Bare Map Function with Assignment
+========================
+
+$roles = $array.map |String $role| { "role::${role}" }
+
+---
+
+(source_file
+  (assignment
+    (variable
+      (identifier))
+    (field_expression
+      (variable (identifier))
+      (builtin_iterator_funtions)
+      (lambda
+        (builtin_type)
+        (variable
+        (identifier))
+        (block
+          (string
+            (string_content)
+            (interpolation
+              (identifier))))))))
+
+========================
+Bare Each Function
+========================
+
+$array.each |String $role| { "role::${role}" }
+
+---
+
+(source_file
+  (iterator_statement
+    (variable (identifier))
+    (builtin_iterator_funtions)
+    (builtin_type)
+    (variable
+    (identifier))
+    (block
+      (string
+        (string_content)
+        (interpolation
+          (identifier))))))
+
+========================
+Chained Functions
+========================
+
+$array.reverse.each |String $role| { "role::${role}" }
+
+---
+
+(source_file
+  (iterator_statement
+    (field_expression
+      (variable (identifier))
+      (identifier))
+    (builtin_iterator_funtions)
+    (builtin_type)
+    (variable
+    (identifier))
+    (block
+      (string
+        (string_content)
+        (interpolation
+          (identifier))))))
